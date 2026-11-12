@@ -202,9 +202,7 @@ The tests cover the pricing rules (including "never show a price of 0"), the adm
 - [ ] Backend unit tests, GitHub Actions CI, Docker Compose (API + SQL Server)
 - [ ] Deployment and real product photography
 
-## 🙏 Credits
-
-Product photographs are freely licensed images from **Wikimedia Commons** (CC BY, CC BY-SA, GFDL, CC0 and public domain). Licences that require attribution are credited per image in [`KFC_Frontend/src/app/core/data/produce-photos.ts`](KFC_Frontend/src/app/core/data/produce-photos.ts).
+## 🙏 About
 
 "KFC" here is only the short form of **Khuhra Fruit Company**; this project has no connection to any other company using those initials.
 

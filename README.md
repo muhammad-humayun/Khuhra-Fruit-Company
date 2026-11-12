@@ -22,7 +22,21 @@
 > [Known limitations](#%EF%B8%8F-known-limitations) and the [Roadmap](#%EF%B8%8F-roadmap).
 > The prices in the seed data are **placeholders**, not the company's real rates.
 
-**Contents:** [What it does](#-what-it-does) · [Architecture](#-architecture) · [AI assistant](#-ai-assistant) · [Security](#-security) · [Getting started](#-getting-started) · [API overview](#-api-overview) · [Tests](#-tests) · [Known limitations](#%EF%B8%8F-known-limitations) · [Roadmap](#%EF%B8%8F-roadmap) · [Credits](#-credits) · [Author](#-author)
+**Contents:** [Screenshots](#-screenshots) · [What it does](#-what-it-does) · [Architecture](#-architecture) · [AI assistant](#-ai-assistant) · [Security](#-security) · [Getting started](#-getting-started) · [API overview](#-api-overview) · [Tests](#-tests) · [Known limitations](#%EF%B8%8F-known-limitations) · [Roadmap](#%EF%B8%8F-roadmap) · [Credits](#-credits) · [Author](#-author)
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/home.jpg" alt="Home page with hero slider and shop-by-category row" width="100%"/>
+  <br/><sub>Home page — hero slider and shop by category</sub>
+</p>
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/fruits.jpg" alt="Fruits catalogue in English with pack sizes and prices"/><p align="center"><sub>Fruits catalogue — pack sizes, prices in PKR, add to basket</sub></p></td>
+<td width="50%"><img src="docs/screenshots/fruits-sindhi.jpg" alt="The same catalogue in Sindhi with right-to-left layout"/><p align="center"><sub>The same page in Sindhi — the whole layout flips to right-to-left</sub></p></td>
+</tr>
+</table>
 
 ## ✨ What it does
 

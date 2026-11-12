@@ -1,0 +1,77 @@
+<!-- Hero carousel -->
+<app-hero-slider />
+
+<!-- Shop by category -->
+<section class="section section--tight">
+  <div class="container">
+    <h2 class="psec__title">{{ i18n.t('home.shopByCategory') }}</h2>
+
+    <div class="cattiles">
+      @for (tile of categoryTiles(); track tile.slug) {
+        <a class="cattile2" [routerLink]="tile.route">
+          <span class="cattile2__art">
+            <app-product-image [src]="tile.image" [label]="tile.name" />
+          </span>
+          <span class="cattile2__name">{{ tile.name }}</span>
+          <span class="cattile2__count">{{ tile.count }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- In season -->
+@if (seasonal().length > 0) {
+  <section class="section section--tight">
+    <div class="container">
+      <app-product-section
+        [title]="i18n.t('home.inSeasonTitle')"
+        [products]="seasonal()"
+        [eager]="true"
+      />
+    </div>
+  </section>
+}
+
+<!-- Fruits -->
+<section class="section section--tight section--tint">
+  <div class="container">
+    <app-product-section
+      [title]="i18n.t('home.fruitsTitle')"
+      [products]="fruitPicks()"
+      link="/fruits"
+    />
+  </div>
+</section>
+
+<!-- Vegetables -->
+<section class="section section--tight">
+  <div class="container">
+    <app-product-section
+      [title]="i18n.t('home.vegetablesTitle')"
+      [products]="vegetablePicks()"
+      link="/vegetables"
+    />
+  </div>
+</section>
+
+<!-- Honest info strip: only things the business has confirmed -->
+<section class="section section--tight">
+  <div class="container infostrip">
+    <div class="infotile">
+      <span class="infotile__ico infotile__ico--pin" aria-hidden="true"></span>
+      <strong class="infotile__title">{{ i18n.t('home.info1Title') }}</strong>
+      <span class="infotile__body">{{ i18n.t('home.info1Body') }}</span>
+    </div>
+    <div class="infotile">
+      <span class="infotile__ico infotile__ico--wa" aria-hidden="true"></span>
+      <strong class="infotile__title">{{ i18n.t('home.info2Title') }}</strong>
+      <span class="infotile__body">{{ i18n.t('home.info2Body') }}</span>
+    </div>
+    <div class="infotile">
+      <span class="infotile__ico infotile__ico--lang" aria-hidden="true"></span>
+      <strong class="infotile__title">{{ i18n.t('home.info3Title') }}</strong>
+      <span class="infotile__body">{{ i18n.t('home.info3Body') }}</span>
+    </div>
+  </div>
+</section>

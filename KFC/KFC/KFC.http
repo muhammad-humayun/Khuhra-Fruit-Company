@@ -1,0 +1,41 @@
+@KFC_HostAddress = http://localhost:5077
+
+### Health check
+GET {{KFC_HostAddress}}/api/health
+Accept: application/json
+
+### Public catalogue
+GET {{KFC_HostAddress}}/api/categories
+Accept: application/json
+
+###
+GET {{KFC_HostAddress}}/api/products
+Accept: application/json
+
+### Is the AI assistant switched on?
+GET {{KFC_HostAddress}}/api/chat/status
+Accept: application/json
+
+### Ask the AI assistant (needs Chat__ApiKey set on the server)
+POST {{KFC_HostAddress}}/api/chat
+Content-Type: application/json
+
+{ "sessionId": "demo-session-0001", "message": "Which fruits are in season in summer?" }
+
+### First-run only: create the first admin (refused once any admin exists)
+POST {{KFC_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{ "email": "you@example.com", "displayName": "Your Name", "password": "change-me-please" }
+
+### Sign in - copy data.token from the response into @token below
+POST {{KFC_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "you@example.com", "password": "change-me-please" }
+
+### Admin: list every item (needs a token)
+@token = paste-token-here
+GET {{KFC_HostAddress}}/api/admin/products
+Authorization: Bearer {{token}}
+Accept: application/json

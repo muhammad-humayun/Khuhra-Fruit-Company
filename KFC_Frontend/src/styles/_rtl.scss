@@ -1,0 +1,73 @@
+/* ============================================================================
+   Sindhi / RTL
+   Nearly everything is already mirrored, because the layout uses logical
+   properties (inset-inline, padding-inline, text-align: start) throughout.
+   What is left here is the handful of things direction alone cannot fix.
+   ========================================================================= */
+
+/* Phone numbers, prices and dates stay left-to-right inside Sindhi text,
+   which is how they are read and dialled. */
+:root[dir='rtl'] {
+  .phoneline__num,
+  .phonecard__num,
+  .infocard__big,
+  .hero__phones a,
+  .rate__price,
+  .ratetable__price,
+  .ratetable__unit,
+  .ratetable__conv,
+  .chipbtn__count {
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+
+  /* The forward arrow has to point the other way. */
+  .cattile__arrow {
+    transform: scaleX(-1);
+  }
+
+  .cattile:hover .cattile__arrow {
+    transform: scaleX(-1) translateX(6px);
+  }
+
+  /* The chat-bubble tail belongs on the other corner. */
+  .btn__waIcon,
+  .fab__icon,
+  .mobilebar__ico--wa {
+    border-radius: 50% 50% 3px 50%;
+  }
+
+  .btn:hover .btn__waIcon {
+    transform: scale(1.12) rotate(6deg);
+  }
+
+  /* Latin names shown beside Sindhi ones. */
+  .pcard__local {
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+}
+
+/* The second name under a card title is always in the other script, so it gets
+   its own direction from the bound dir attribute - these just tidy the metrics. */
+.pcard__alt[dir='rtl'] {
+  font-family: var(--font-sd);
+  line-height: 1.9;
+}
+
+.pcard__alt[dir='ltr'] {
+  font-family: var(--font-sans);
+}
+
+/* Sindhi headings in a dark band need a touch more weight to hold up. */
+:root[data-lang='sd'] {
+  .hero__title,
+  .pagehead__title {
+    font-weight: 700;
+  }
+
+  .sectionhead__sub,
+  .pagehead__sub {
+    font-size: 1rem;
+  }
+}

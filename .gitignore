@@ -1,0 +1,33 @@
+# ---------- .NET ----------
+bin/
+obj/
+.vs/
+*.user
+*.suo
+TestResults/
+secrets.json
+appsettings.*.Local.json
+
+# ---------- Angular / Node ----------
+node_modules/
+dist/
+.angular/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+.env
+.env.*
+!.env.example
+
+# ---------- Local-only files ----------
+# Private copy of the database script (may contain real account rows)
+kfc_script.txt
+# Retired pages kept on disk for reference; not part of the app
+KFC_Frontend/_removed/
+# Editor / assistant tooling
+.claude/
+.idea/
+
+# ---------- OS ----------
+.DS_Store
+Thumbs.db

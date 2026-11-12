@@ -1,0 +1,11 @@
+/* The shell only needs to lay out header, main and footer as a column, so the footer
+ * sits at the bottom even on a short page. Everything else is in the global stylesheet. */
+:host {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+}
+
+.sitemain {
+  flex: 1 0 auto;
+}

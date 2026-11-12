@@ -1,0 +1,19 @@
+{
+  "name": "Khuhra Fruit Company",
+  "short_name": "Khuhra Fruit",
+  "description": "Sabzi Fruit Commission Agent at Sabzi Mandi, Larkana, Sindh. Fruit and vegetable catalogue and market rates.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffbf2",
+  "theme_color": "#0a2f5c",
+  "lang": "en",
+  "dir": "auto",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

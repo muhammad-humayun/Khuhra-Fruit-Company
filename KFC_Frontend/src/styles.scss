@@ -1,0 +1,21 @@
+/* Khuhra Fruit Company - global stylesheet.
+ *
+ * The design system lives here rather than in component styles for two reasons: the shared
+ * vocabulary (buttons, chips, cards, rate blocks) is used by almost every component, and the
+ * production build caps any single component stylesheet at 8 kB.
+ *
+ * Order matters: tokens and the reset first, then the shared vocabulary, then layout, then page
+ * blocks, then the responsive steps, then the RTL corrections, and print last.
+ */
+
+@use 'styles/tokens';
+@use 'styles/components';
+@use 'styles/layout';
+@use 'styles/pages';
+// Shop surface: overrides the darker brochure treatment with the retail one.
+@use 'styles/shop';
+// The owner's setup screens. After the shop so it can add its own button variants.
+@use 'styles/admin';
+@use 'styles/responsive';
+@use 'styles/rtl';
+@use 'styles/print';

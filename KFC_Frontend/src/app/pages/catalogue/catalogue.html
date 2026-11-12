@@ -1,0 +1,85 @@
+<section class="shophead" [class.shophead--veg]="!isFruit()">
+  <div class="container">
+    <h1 class="shophead__title">{{ title() }}</h1>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="toolbar">
+      <div class="toolbar__search">
+        <label class="srOnly" for="catalogue-search">{{ i18n.t('common.search') }}</label>
+        <input
+          id="catalogue-search"
+          class="input"
+          type="search"
+          autocomplete="off"
+          [value]="search()"
+          [placeholder]="i18n.t('common.searchPlaceholder')"
+          (input)="onSearch($event)"
+        />
+      </div>
+
+      <button
+        type="button"
+        class="chipbtn"
+        [class.is-active]="inSeasonOnly()"
+        [attr.aria-pressed]="inSeasonOnly()"
+        (click)="toggleSeason()"
+      >
+        {{ i18n.t('common.inSeasonFilter') }}
+      </button>
+    </div>
+
+    <div class="catrail" role="group" [attr.aria-label]="i18n.t('cat.filterCategory')">
+      <button
+        type="button"
+        class="chipbtn"
+        [class.is-active]="activeCategory() === null"
+        [attr.aria-pressed]="activeCategory() === null"
+        (click)="selectCategory(null)"
+      >
+        {{ i18n.t('common.allCategories') }} <span class="chipbtn__count">{{ total() }}</span>
+      </button>
+
+      @for (category of categories(); track category.slug) {
+        <button
+          type="button"
+          class="chipbtn"
+          [class.is-active]="activeCategory() === category.slug"
+          [attr.aria-pressed]="activeCategory() === category.slug"
+          (click)="selectCategory(category.slug)"
+        >
+          {{ i18n.categoryName(category) }} <span class="chipbtn__count">{{ category.productCount }}</span>
+        </button>
+      }
+    </div>
+
+    <div class="resultbar">
+      <p class="resultbar__count" aria-live="polite">
+        {{ i18n.t('common.showingCount', { count: results().length, total: total() }) }}
+      </p>
+      @if (hasFilters()) {
+        <button type="button" class="link link--btn" (click)="clearFilters()">
+          {{ i18n.t('common.clearFilters') }}
+        </button>
+      }
+    </div>
+
+    @if (results().length > 0) {
+      <div class="pgrid">
+        @for (product of results(); track product.slug; let i = $index) {
+          <app-product-card [product]="product" [eager]="i < 6" />
+        }
+      </div>
+    } @else {
+      <div class="emptystate">
+        <h2 class="emptystate__title">{{ i18n.t('common.noResults') }}</h2>
+        <p>{{ i18n.t('common.noResultsHint') }}</p>
+        <button type="button" class="btn btn--outline" (click)="clearFilters()">
+          {{ i18n.t('common.clearFilters') }}
+        </button>
+      </div>
+    }
+  </div>
+</section>

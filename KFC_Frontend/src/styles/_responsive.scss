@@ -1,0 +1,217 @@
+/* ============================================================================
+   Responsive
+   Three steps: desktop, tablet (nav collapses), phone (bottom action bar).
+   ========================================================================= */
+
+@media (max-width: 1100px) {
+  .sitefooter__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .aboutgrid,
+  .wholesalegrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .factcard {
+    position: static;
+  }
+}
+
+/* Nav collapses into a panel under the header. */
+@media (max-width: 1180px) {
+  .siteheader__burger {
+    display: grid;
+    place-items: center;
+  }
+
+  .siteheader__wa {
+    display: none;
+  }
+
+  .sitenav {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--c-blue-900);
+    box-shadow: var(--sh-lg);
+    transition: max-height var(--t-med) var(--ease);
+  }
+
+  .siteheader.is-open .sitenav {
+    max-height: 72vh;
+    overflow-y: auto;
+  }
+
+  .sitenav__list {
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px clamp(16px, 4vw, 32px) 18px;
+    justify-content: flex-start;
+  }
+
+  .sitenav__link {
+    padding: 13px 14px;
+    font-size: 1rem;
+  }
+
+  .sitenav__link::after {
+    inset-inline: 14px auto;
+    width: 26px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero__display {
+    order: -1;
+    max-width: 520px;
+  }
+
+  .herotile:nth-child(odd),
+  .herotile:nth-child(even) {
+    transform: none;
+  }
+
+  .cattile {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --header-h: 70px;
+  }
+
+  .sitefooter__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .brand__name {
+    font-size: 0.95rem;
+  }
+
+  .brand__tagline {
+    font-size: 0.68rem;
+  }
+
+  .field--split {
+    grid-template-columns: 1fr;
+  }
+
+  .formcard,
+  .previewcard,
+  .infocard {
+    padding: 20px;
+  }
+
+  /* The floating button gives way to the bottom bar. */
+  .fab {
+    display: none;
+  }
+
+  .mobilebar {
+    display: flex;
+  }
+
+  body {
+    padding-block-end: calc(58px + env(safe-area-inset-bottom));
+  }
+
+  .toolbar {
+    gap: 10px;
+  }
+
+  .toolbar__right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Narrow phones: the brand has to give way so the menu button stays on screen. */
+@media (max-width: 520px) {
+  .siteheader__bar {
+    gap: 8px;
+  }
+
+  /* The base rule is `flex: 0 0 auto`, which blocks shrinking however small min-width is. */
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 9px;
+  }
+
+  .siteheader__actions {
+    flex: 0 0 auto;
+  }
+
+  .brand__text {
+    min-width: 0;
+  }
+
+  .brand__name {
+    font-size: 0.84rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand__tagline {
+    font-size: 0.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand__mark {
+    transform: scale(0.82);
+    transform-origin: center;
+    margin-inline-start: -4px;
+  }
+
+  .siteheader__actions {
+    gap: 6px;
+  }
+
+  .langswitch {
+    padding: 2px;
+  }
+
+  .langswitch__btn {
+    padding: 5px 9px;
+    font-size: 0.74rem;
+  }
+
+  .siteheader__burger {
+    width: 38px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 440px) {
+  .cattile {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cattile__art app-produce-image {
+    min-height: 150px;
+  }
+
+  .hero__display {
+    gap: 10px;
+  }
+
+  .pcard__actions {
+    flex-direction: column;
+  }
+
+  .pcard__actions .btn {
+    width: 100%;
+  }
+}

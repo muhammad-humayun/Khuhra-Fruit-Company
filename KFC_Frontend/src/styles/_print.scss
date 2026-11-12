@@ -1,0 +1,77 @@
+/* ============================================================================
+   Print
+   Mainly for the rate sheet: a buyer printing today's rates should get the
+   table and its provenance, not the navigation and the floating buttons.
+   ========================================================================= */
+
+@media print {
+  .siteheader,
+  .sitefooter,
+  .fab,
+  .mobilebar,
+  .skiplink,
+  .noprint,
+  .band {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    padding: 0;
+    font-size: 11pt;
+  }
+
+  .pagehead {
+    padding-block: 0 12pt;
+    background: none !important;
+    color: #000;
+  }
+
+  .pagehead__title,
+  .pagehead__sub,
+  .pagehead__note {
+    color: #000;
+    background: none;
+  }
+
+  .section {
+    padding-block: 8pt;
+  }
+
+  .tablewrap {
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .ratetable {
+    min-width: 0;
+    page-break-inside: auto;
+  }
+
+  .ratetable thead th {
+    background: #eee !important;
+    color: #000 !important;
+    border-block-end: 1pt solid #000;
+  }
+
+  .ratetable tbody tr {
+    page-break-inside: avoid;
+  }
+
+  .chip {
+    border: 0.5pt solid #666;
+    background: none !important;
+    color: #000 !important;
+  }
+
+  a[href]::after {
+    content: '';
+  }
+
+  .sourcelist li {
+    background: none;
+    box-shadow: none;
+    border: 0.5pt solid #999;
+  }
+}

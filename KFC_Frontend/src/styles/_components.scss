@@ -1,0 +1,462 @@
+/* ============================================================================
+   Buttons
+   Every button lifts slightly and deepens its shadow on hover. The WhatsApp
+   button also gets a light sweep across it, which reads as a highlight rather
+   than an animation for its own sake.
+   ========================================================================= */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  background: var(--c-blue-700);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform var(--t-fast) var(--ease),
+    box-shadow var(--t-med) var(--ease),
+    background-color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-md);
+  background: var(--c-blue-600);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--sm {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}
+
+.btn--lg {
+  padding: 15px 28px;
+  font-size: 1rem;
+}
+
+.btn--block {
+  width: 100%;
+  margin-block-start: 10px;
+}
+
+.btn--wa {
+  background: linear-gradient(135deg, var(--c-wa) 0%, var(--c-wa-dark) 100%);
+  color: #fff;
+}
+
+.btn--wa:hover {
+  background: linear-gradient(135deg, #2ee371 0%, #14a192 100%);
+  box-shadow: var(--sh-wa);
+}
+
+/* The sweep. Sits above the fill, below the label. */
+.btn--wa::after,
+.btn--gold::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 45%), transparent);
+  transform: skewX(-18deg);
+  transition: inset-inline-start var(--t-slow) var(--ease);
+  pointer-events: none;
+}
+
+.btn--wa:hover::after,
+.btn--gold:hover::after {
+  inset-inline-start: 120%;
+}
+
+/* A chat bubble: a disc with one pointed corner. Inherits the button's text colour. */
+.btn__waIcon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  background: currentColor;
+  border-radius: 50% 50% 50% 3px;
+  transition: transform var(--t-med) var(--ease);
+}
+
+.btn:hover .btn__waIcon {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+.btn--gold {
+  background: linear-gradient(135deg, var(--c-gold-400) 0%, var(--c-gold-600) 100%);
+  color: var(--c-blue-900);
+}
+
+.btn--gold:hover {
+  box-shadow: var(--sh-gold);
+}
+
+.btn--light {
+  background: rgb(255 255 255 / 92%);
+  color: var(--c-blue-800);
+  border-color: rgb(255 255 255 / 60%);
+}
+
+.btn--light:hover {
+  background: #fff;
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--c-blue-700);
+  border-color: var(--line-strong);
+}
+
+.btn--outline:hover {
+  background: var(--c-cream-100);
+  border-color: var(--c-blue-600);
+  color: var(--c-blue-800);
+}
+
+.btn--ghost {
+  background: var(--c-cream-100);
+  color: var(--c-blue-800);
+  border-color: var(--line);
+}
+
+.btn--ghost:hover {
+  background: var(--c-gold-100);
+  border-color: var(--c-gold-500);
+}
+
+.btn--icon {
+  flex: 0 0 auto;
+  padding-inline: 16px;
+}
+
+/* ============================================================================
+   Chips and pills
+   ========================================================================= */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  background: var(--c-cream-200);
+  color: var(--c-ink-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.chip--official {
+  background: var(--c-green-100);
+  color: var(--c-green-800);
+  box-shadow: inset 0 0 0 1px rgb(30 122 62 / 25%);
+}
+
+.chip--manual {
+  background: var(--c-blue-100);
+  color: var(--c-blue-800);
+  box-shadow: inset 0 0 0 1px rgb(20 83 143 / 22%);
+}
+
+.chip--quiet {
+  background: rgb(0 0 0 / 4%);
+  color: var(--c-ink-faint);
+}
+
+.chip--wa {
+  background: rgb(37 211 102 / 16%);
+  color: var(--c-wa-dark);
+}
+
+.chip--season {
+  background: var(--c-green-600);
+  color: #fff;
+}
+
+.chip--origin {
+  background: var(--c-blue-800);
+  color: #fff;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: var(--r-pill);
+  background: rgb(255 255 255 / 15%);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(2px);
+}
+
+.pill--light {
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 35%);
+}
+
+:root[data-lang='sd'] .pill {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Filter chips */
+.chipbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--c-ink-soft);
+  font-size: 0.88rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    transform var(--t-fast) var(--ease),
+    background-color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease),
+    box-shadow var(--t-med) var(--ease);
+}
+
+.chipbtn:hover {
+  transform: translateY(-1px);
+  border-color: var(--c-gold-500);
+  background: var(--c-gold-100);
+  color: var(--c-blue-900);
+  box-shadow: var(--sh-sm);
+}
+
+.chipbtn.is-active {
+  background: var(--c-blue-800);
+  border-color: var(--c-blue-800);
+  color: #fff;
+}
+
+.chipbtn.is-active:hover {
+  background: var(--c-blue-700);
+  color: #fff;
+}
+
+.chipbtn__count {
+  padding: 1px 7px;
+  border-radius: var(--r-pill);
+  background: rgb(0 0 0 / 8%);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.chipbtn.is-active .chipbtn__count {
+  background: rgb(255 255 255 / 22%);
+}
+
+/* ============================================================================
+   Inputs
+   ========================================================================= */
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--c-ink);
+  font: inherit;
+  transition:
+    border-color var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
+}
+
+.input::placeholder {
+  color: var(--c-ink-faint);
+}
+
+.input:hover {
+  border-color: var(--c-blue-500);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--c-blue-600);
+  box-shadow: 0 0 0 4px rgb(29 107 176 / 16%);
+}
+
+.input--area {
+  resize: vertical;
+  min-height: 92px;
+}
+
+.field {
+  margin-block-end: 16px;
+}
+
+.field--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field__label {
+  display: block;
+  margin-block-end: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-ink-soft);
+}
+
+/* ============================================================================
+   Language and unit toggles
+   ========================================================================= */
+
+.langswitch,
+.unittoggle__group {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: var(--r-pill);
+  background: rgb(8 40 69 / 8%);
+}
+
+.langswitch__btn,
+.unittoggle__btn {
+  padding: 6px 13px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--c-blue-800);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease),
+    box-shadow var(--t-med) var(--ease);
+}
+
+.langswitch__btn--sd {
+  font-family: var(--font-sd);
+}
+
+.langswitch__btn:hover,
+.unittoggle__btn:hover {
+  background: rgb(255 255 255 / 70%);
+}
+
+.langswitch__btn.is-active,
+.unittoggle__btn.is-active {
+  background: var(--surface);
+  color: var(--c-blue-900);
+  box-shadow: var(--sh-sm);
+}
+
+.unittoggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.unittoggle__label {
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--c-ink-faint);
+}
+
+/* ============================================================================
+   Rate block
+   ========================================================================= */
+
+.rate {
+  margin-block: 14px 12px;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  background: var(--c-cream-100);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.rate--official {
+  background: linear-gradient(180deg, var(--c-green-100) 0%, #f3fbf4 100%);
+  box-shadow: inset 0 0 0 1px rgb(30 122 62 / 22%);
+}
+
+.rate--none {
+  background: var(--c-gold-100);
+  box-shadow: inset 0 0 0 1px rgb(215 155 0 / 30%);
+}
+
+.rate__row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rate__price {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-blue-900);
+}
+
+.rate__unit {
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--c-ink-soft);
+}
+
+.rate__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-block-start: 8px;
+}
+
+.rate__note,
+.rate__source {
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--c-ink-faint);
+}
+
+.rate__askLabel {
+  display: inline-block;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--c-blue-900);
+}
+
+.rate__fallback {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: #7a5a06;
+}
+
+.rate__expired {
+  margin: 8px 0 0;
+  padding-block-start: 8px;
+  border-block-start: 1px dashed rgb(215 155 0 / 45%);
+  font-size: 0.76rem;
+  color: var(--c-ink-soft);
+}
+

@@ -1,0 +1,68 @@
+@if (!isAdminRoute()) {
+  <a class="skiplink" href="#main">{{ i18n.t('a11y.skipToContent') }}</a>
+}
+
+@if (showPriceNotice()) {
+  <div class="pricenotice" role="status">
+    <div class="container pricenotice__inner">
+      <span class="pricenotice__text">{{ i18n.t('banner.placeholderPrices') }}</span>
+      <button type="button" class="pricenotice__close" (click)="dismissPriceNotice()">
+        {{ i18n.t('banner.dismiss') }}
+      </button>
+    </div>
+  </div>
+}
+
+@if (!isAdminRoute()) {
+  <app-header />
+}
+
+<main id="main" class="sitemain" [class.sitemain--admin]="isAdminRoute()">
+  <router-outlet />
+</main>
+
+@if (!isAdminRoute()) {
+  <app-footer />
+
+  <app-cart-drawer />
+
+  <!-- Floating AI assistant. Sits above the WhatsApp button, not over it. -->
+  <app-chat-widget />
+}
+
+@if (!isAdminRoute()) {
+<!-- Floating WhatsApp action, hidden on small screens where the bottom bar takes over. -->
+<a
+  class="fab"
+  [href]="waLink()"
+  target="_blank"
+  rel="noopener"
+  [attr.aria-label]="i18n.t('common.whatsappInquiry')"
+>
+  <span class="fab__icon" aria-hidden="true"></span>
+  <span class="fab__text">{{ i18n.t('common.whatsapp') }}</span>
+</a>
+
+<!-- Phone-only quick actions: call, WhatsApp, basket, directions. -->
+<nav class="mobilebar" [attr.aria-label]="i18n.t('footer.contactTitle')">
+  <a class="mobilebar__item" [href]="'tel:' + business.phones[0].tel">
+    <span class="mobilebar__ico mobilebar__ico--call" aria-hidden="true"></span>
+    {{ i18n.t('common.call') }}
+  </a>
+  <a class="mobilebar__item mobilebar__item--wa" [href]="waLink()" target="_blank" rel="noopener">
+    <span class="mobilebar__ico mobilebar__ico--wa" aria-hidden="true"></span>
+    {{ i18n.t('common.whatsapp') }}
+  </a>
+  <button type="button" class="mobilebar__item mobilebar__item--cart" (click)="cart.open()">
+    <span class="mobilebar__ico mobilebar__ico--cart" aria-hidden="true"></span>
+    {{ i18n.t('cart.short') }}
+    @if (cart.count() > 0) {
+      <span class="mobilebar__badge">{{ cart.count() }}</span>
+    }
+  </button>
+  <a class="mobilebar__item" [href]="business.maps.directionsUrl" target="_blank" rel="noopener">
+    <span class="mobilebar__ico mobilebar__ico--pin" aria-hidden="true"></span>
+    {{ i18n.t('common.directions') }}
+  </a>
+</nav>
+}
